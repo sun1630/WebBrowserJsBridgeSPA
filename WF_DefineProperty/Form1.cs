@@ -25,6 +25,7 @@ namespace WF_DefineProperty
             this._dso = new DocumentScriptingObject();
             this.wb1.ObjectForScripting = _dso;
             string s = "http://localhost:18166/wb1.html";
+            s = @"http://localhost:18166/index.html";
             //webBrowser1.Url = new Uri(s);
             this.wb1.Navigate(s);
             wb1.Navigated += new WebBrowserNavigatedEventHandler(wb1_Navigated);
@@ -49,19 +50,43 @@ namespace WF_DefineProperty
         private void button1_Click(object sender, EventArgs e)
         {
             object[] args = new object[1];
-            args[0] = (object)"C#李四";
+            args[0] = (object) this.textBox1.Text;
             var peripheringDevice = _dso.PeripheringDevice;
-            var listener = peripheringDevice.OnExternalEvent;
-            listener
-                .GetType()
-                .InvokeMember
-                        (
-                            ""
-                            , BindingFlags.InvokeMethod
-                            , null
-                            , listener
-                            , args
-                        );
+            if (peripheringDevice.OnExternalEvent != null)
+            { 
+                var listener = peripheringDevice.OnExternalEvent;
+                listener
+                    .GetType()
+                    .InvokeMember
+                            (
+                                ""
+                                , BindingFlags.InvokeMethod
+                                , null
+                                , listener
+                                , args
+                            );
+            }
+
+            peripheringDevice.Listeners.ForEach(
+
+                (x)=>
+                {
+
+                    x
+                    .GetType()
+                    .InvokeMember
+                            (
+                                ""
+                                , BindingFlags.InvokeMethod
+                                , null
+                                , x
+                                , args
+                            );
+                }
+
+
+                );
+
         }
 
        

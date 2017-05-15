@@ -28,12 +28,20 @@
     var canSayHello = ko.computed(function () {
         return name ? true : false;
     });
+ var r = new vm();
+    window.external.PeripheringDevice.AddJavaScriptListener(function (msg) {
+        r.fullNameW = msg;
+
+    });
+
+   
+
 
     return {
         displayName: 'What is your name?',
-        name: name,
+        name: r.fullName,
         sayHello: function() {
-            alert(name)
+            alert(this.name)
         },
         canSayHello: canSayHello,
         activate: function() {

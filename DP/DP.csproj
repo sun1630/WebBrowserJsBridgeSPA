@@ -66,6 +66,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\10002\10002.html" />
+    <Content Include="app\10002\10002.js" />
+    <Content Include="app\10001\10001.js" />
+    <Content Include="app\10001\10001.html" />
     <Content Include="packages.config" />
     <Content Include="app\viewComposition\inlineModule" />
     <Content Include="app\widgets\Readme.md" />
