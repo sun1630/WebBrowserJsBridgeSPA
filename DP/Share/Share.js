@@ -1,9 +1,13 @@
-﻿define(['durandal/app', 'durandal/system', 'knockout', 'share'], function (app, system, ko, data) {
-    var vm = (function () {
-        function person() {
+﻿define(['knockout'], function (ko) {
+
+     ShareManager.DataContext = (function () {
+        function Data() {
             //this._fullName = ko.observable('default wangwu');
             if (!debugInWebBrowser) {
-                this.Share = data.Share;
+                this._fullName = ko.observable(
+                    //window.external.PeripheringDevice.GetExternalName()
+                    'default share wangwu'
+                );
             }
             else {
                 this._fullName = ko.observable(
@@ -14,7 +18,7 @@
             this._age = 20;
             this._externalName = 'js externalName';
         }
-        Object.defineProperty(person.prototype, "fullName", {
+        Object.defineProperty(Data.prototype, "fullName", {
             get: function () {
                 return this._fullName();
             },
@@ -22,7 +26,7 @@
             configurable: true
         });
 
-        Object.defineProperty(person.prototype, "fullNameW", {
+        Object.defineProperty(Data.prototype, "fullNameW", {
             set: function (newName) {
                 this._fullName(newName);
             },
@@ -30,24 +34,10 @@
             configurable: true
         });
 
-        //Object.defineProperty(person.prototype, "age", {
-        //    get: function () {
-        //        return this._fullName;
-        //    },
-        //    enumerable: true,
-        //    configurable: true
-        //});
-        //Object.defineProperty(person.prototype, "ageW", {
-        //    set: function (newName) {
-        //        this._fullName = newName;
-        //    },
-        //    enumerable: true,
-        //    configurable: true
-        //});
-
-        return person;
+        return Data;
     }());
-    var r = new vm();
+     var r = new ShareManager.DataContext();
+
     if (debugInWebBrowser) {
         window
             .external
@@ -56,6 +46,7 @@
                 r.fullNameW = msg;
             });
     }
+
 
     r.alertA = function () {
         alert(this.fullName);
@@ -67,4 +58,8 @@
     //}
 
     return r;
+
+
+
+
 });

@@ -6,7 +6,11 @@
         'transitions' : '../lib/durandal/js/transitions',
         'knockout': '../lib/knockout/knockout-3.4.0',
         'bootstrap': '../lib/bootstrap/js/bootstrap',
-        'jquery': '../lib/jquery/jquery-1.9.1'
+        'jquery': '../lib/jquery/jquery-1.9.1',
+
+        //2017-05-16 yxy
+        'share': '../share/share'
+
     },
     shim: {
         'bootstrap': {
@@ -15,6 +19,12 @@
         }
     }
 });
+
+(function (arg) {
+    arg.ShareManager = arg.ShareManager || null;
+    window.ShareManager = window.ShareManager || arg;
+}(window.ShareManager || {})
+);
 
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'bootstrap'], function (system, app, viewLocator) {
     //>>excludeStart("build", true);

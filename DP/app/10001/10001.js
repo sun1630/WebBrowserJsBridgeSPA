@@ -1,4 +1,4 @@
-﻿define(['durandal/app', 'durandal/system', 'knockout'], function (app, system, ko) {
+﻿define(['durandal/app', 'durandal/system', 'knockout', 'share'], function (app, system, ko, data) {
     var vm = (function () {
             function person() {
                 //this._fullName = ko.observable('default wangwu');
@@ -17,7 +17,11 @@
                 }
                 this._age = 20;
                 this._externalName = 'js externalName';
+                this.DataContext = data;
         }
+
+        
+
         Object.defineProperty(person.prototype, "fullName", {
             get: function () {
                 return this._fullName();
