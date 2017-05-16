@@ -21,6 +21,14 @@
     <link rel="stylesheet" href="css/samples.css" />
 
     <script type="text/javascript">
+        var debugInWebBrowser = false;
+
+        var hashString = (window.location.hash.length > 0 ? window.location.hash.substring(1) : "")
+        if (hashString == 'debugInWebBrowser') {
+            debugInWebBrowser = true;
+        }
+
+        window.location.hash = '';
         if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
             var msViewportStyle = document.createElement("style");
             var mq = "@@-ms-viewport{width:auto!important}";
@@ -28,12 +36,14 @@
             document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
         }
 
-
-        window.external.PeripheringDevice.AddJavaScriptListener(function (msg) {
-            alert('mainpage')
-
-        });
-
+        if (debugInWebBrowser) {
+            window
+                .external
+                .DataSynchronizer
+                .AddJavaScriptListener(function (msg) {
+                    alert('main page');
+                });
+        }
 
     </script>
 </head>
