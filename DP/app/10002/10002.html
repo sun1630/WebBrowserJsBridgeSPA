@@ -12,7 +12,12 @@
         <p>First name w: <input data-bind="value: fullNameW" /></p>
 
 
+        <p>Share First name: <input data-bind="value: dataContextB.fullName" /></p>
+
+        <p>Share First name w: <input data-bind="value: dataContextB.fullNameW" /></p>
+
         <button data-bind="click: alertA">alert</button>
+        <button data-bind="click: dataContextB.alertA">Share alert</button>
 
     </div>
     </section>

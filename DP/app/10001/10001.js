@@ -1,26 +1,20 @@
 ﻿define(['durandal/app', 'durandal/system', 'knockout', 'share'], function (app, system, ko, data) {
     var vm = (function () {
-            function person() {
-                //this._fullName = ko.observable('default wangwu');
-                if (!debugInWebBrowser) {
-                    this._fullName = ko.observable(
-                        //window.external.PeripheringDevice.GetExternalName()
-                        'default wangwu'
-                    );
-                }
-                else
-                {
-                    this._fullName = ko.observable(
-                        window.external.DataSynchronizer.GetExternalName()
-                        //'default wangwu'
-                    );
-                }
-                this._age = 20;
-                this._externalName = 'js externalName';
-                this.DataContext = data;
+        function person() {
+            if (!debugInWebBrowser) {
+                this._fullName = ko.observable(
+                    'default wangwu'
+                );
+            }
+            else {
+                this._fullName = ko.observable(
+                    window.external.DataSynchronizer.GetExternalName()
+                );
+            }
+            this._age = 20;
+            this._externalName = 'js externalName';
+            this.DataContext = data;
         }
-
-        
 
         Object.defineProperty(person.prototype, "fullName", {
             get: function () {
@@ -38,25 +32,11 @@
             configurable: true
         });
 
-        //Object.defineProperty(person.prototype, "age", {
-        //    get: function () {
-        //        return this._fullName;
-        //    },
-        //    enumerable: true,
-        //    configurable: true
-        //});
-        //Object.defineProperty(person.prototype, "ageW", {
-        //    set: function (newName) {
-        //        this._fullName = newName;
-        //    },
-        //    enumerable: true,
-        //    configurable: true
-        //});
-
         return person;
     }());
+
     var r = new vm();
-    
+
     if (debugInWebBrowser) {
         window
             .external
@@ -65,16 +45,11 @@
                 r.fullNameW = msg;
             });
     }
-    
+
 
     r.alertA = function () {
-         alert(this.fullName);
+        alert(this.fullName);
     }
 
-     //vm.alertA = function () {
-     //    alert('aaaaaa');
-
-     //}
-
-     return r;
+    return r;
 });

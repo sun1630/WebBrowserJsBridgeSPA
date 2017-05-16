@@ -1,18 +1,15 @@
 ﻿define(['knockout'], function (ko) {
 
-     ShareManager.DataContext = (function () {
+    ShareManager.DataContext = (function () {
         function Data() {
-            //this._fullName = ko.observable('default wangwu');
             if (!debugInWebBrowser) {
                 this._fullName = ko.observable(
-                    //window.external.PeripheringDevice.GetExternalName()
                     'default share wangwu'
                 );
             }
             else {
                 this._fullName = ko.observable(
                     window.external.DataSynchronizer.GetExternalName()
-                    //'default wangwu'
                 );
             }
             this._age = 20;
@@ -36,7 +33,8 @@
 
         return Data;
     }());
-     var r = new ShareManager.DataContext();
+
+    var r = new ShareManager.DataContext();
 
     if (debugInWebBrowser) {
         window
@@ -47,15 +45,9 @@
             });
     }
 
-
     r.alertA = function () {
-        alert(this.fullName);
+        alert(r.fullName);
     }
-
-    //vm.alertA = function () {
-    //    alert('aaaaaa');
-
-    //}
 
     return r;
 
