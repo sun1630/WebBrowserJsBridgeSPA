@@ -20,8 +20,18 @@
                                     title: '10002',
                                     nav: 1
                                 },
-
-
+                                {
+                                    route: '10003',
+                                    moduleId: '10003/10003',
+                                    title: '10003',
+                                    nav: 1
+                                },
+                                {
+                                    route: '10004',
+                                    moduleId: '10004/10004',
+                                    title: '10004',
+                                    nav: 1
+                                },
                                 //{ route: 'view-composition',                    moduleId: 'viewComposition/index',      title: 'View Composition',      nav: true },
                                 //{ route: 'modal',                               moduleId: 'modal/index',                title: 'Modal Dialogs',         nav: 3 },
                                 //{ route: 'event-aggregator',                    moduleId: 'eventAggregator/index',      title: 'Events',                nav: 2 },

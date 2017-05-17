@@ -13,9 +13,21 @@
 
 
 
-        <p>First name: <input data-bind="value: DataContext.fullName" /></p>
+        <p>First name: <input data-bind="value: DataContext['fullName']" /></p>
 
         <p>First name w: <input data-bind="value: DataContext.fullNameW" /></p>
+
+        <ul data-bind="foreach:Object.keys(DataContext.Trans), as 'key' ">
+            <li>
+                <span data-bind="text:key"></span>
+            </li>
+
+        </ul>
+
+        <p>Trans ID(Observable): <input data-bind="value: DataContext.Trans['T3'].amount" /></p>
+
+        <p>system ID(Observable): <input data-bind="value: DataContext.system.systemid" /></p>
+        
 
         <button data-bind="click: alertA">alert</button>
         <button data-bind="click: DataContext.alertA">Share alert</button>

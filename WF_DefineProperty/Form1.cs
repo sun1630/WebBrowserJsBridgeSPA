@@ -52,8 +52,9 @@ namespace WF_DefineProperty
 
         private void button1_Click(object sender, EventArgs e)
         {
-            object[] args = new object[1];
-            args[0] = (object) this.textBox1.Text;
+            object[] args = new object[2];
+            args[0] = (object)this.textBox1.Text;
+            args[1] = (object)this.textBox2.Text;
             var peripheringDevice = _dso.DataSynchronizer;
             if (peripheringDevice.OnExternalEvent != null)
             { 

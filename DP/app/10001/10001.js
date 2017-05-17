@@ -35,15 +35,19 @@
         return person;
     }());
 
+    
+
     var r = new vm();
 
+    //console.log(r.DataContext.Trans['T1']);
+
     if (debugInWebBrowser) {
-        window
-            .external
-            .DataSynchronizer
-            .AddJavaScriptListener(function (msg) {
-                r.fullNameW = msg;
-            });
+        //window
+        //    .external
+        //    .DataSynchronizer
+        //    .AddJavaScriptListener(function (msg) {
+        //        r.fullNameW = msg;
+        //    });
     }
 
 

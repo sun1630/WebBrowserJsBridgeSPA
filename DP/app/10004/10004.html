@@ -1,0 +1,19 @@
+﻿<section>
+    <br />
+    <div>
+
+        100004
+        <br />
+
+        <ul data-bind="foreach:{data:Object.keys(DataContext['Trans']), as: 'obj'} ">
+            <li>
+                <span data-bind="text:obj"></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span data-bind="text:$parent.DataContext['Trans'][obj].amount"></span>
+            </li>
+        </ul>
+
+
+
+    </div>
+</section>

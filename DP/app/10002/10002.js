@@ -36,12 +36,12 @@
     var r = new vm();
 
     if (debugInWebBrowser) {
-        window
-            .external
-            .DataSynchronizer
-            .AddJavaScriptListener(function (msg) {
-                r.fullNameW = msg;
-            });
+        //window
+        //    .external
+        //    .DataSynchronizer
+        //    .AddJavaScriptListener(function (msg) {
+        //        r.fullNameW = msg;
+        //    });
     }
 
     r.alertA = function () {

@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="lib/durandal/css/durandal.css" />
     <link rel="stylesheet" href="css/samples.css" />
 
+    <script src="lib/consolejs/console.js"></script>
+    <script src="lib/consolejs/functions.js"></script>
+
     <script type="text/javascript">
         var debugInWebBrowser = false;
 
@@ -37,19 +40,20 @@
             document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
         }
 
-        if (debugInWebBrowser) {
-            window
-                .external
-                .DataSynchronizer
-                .AddJavaScriptListener(function (msg) {
-                    alert('main page');
-                });
-        }
+
 
     </script>
 </head>
 <body>
+
     <div id="applicationHost"></div>
+
+    <div style="position:absolute; z-index:200; height:200px;width:500px; right:0px;" >
+        <div style="height:200px; overflow-y:auto;">
+                <pre class="console"></pre>
+        </div>
+        <textarea class="js-code-to-run"></textarea>
+    </div>
     <script src="lib/require/require.js" data-main="app/main"></script>
 </body>
 </html>
