@@ -4,103 +4,61 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script src="http://localhost:18166/lib/knockout/knockout-3.4.0.js"></script>
+    <script src="lib/knockout/knockout-3.4.0.debug.js"></script>
     <title></title>
-    <script type="text/javascript">
-        var vm = (function () {
-            function person() {
-                this._fullName = ko.observable('王五');
-                this._age = 20;
-                this._externalName = 'js externalName';
-            }
 
-            
-
-            Object.defineProperty(person.prototype, "fullName", {
-                get: function () {
-                    return this._fullName();
-                },
-                enumerable: true,
-                configurable: true
-            });
-
-            Object.defineProperty(person.prototype, "fullNameW", {
-                set: function (newName) {
-                    this._fullName(newName);
-                },
-                enumerable: true,
-                configurable: true
-            });
-
-            //Object.defineProperty(person.prototype, "age", {
-            //    get: function () {
-            //        return this._fullName;
-            //    },
-            //    enumerable: true,
-            //    configurable: true
-            //});
-            //Object.defineProperty(person.prototype, "ageW", {
-            //    set: function (newName) {
-            //        this._fullName = newName;
-            //    },
-            //    enumerable: true,
-            //    configurable: true
-            //});
-
-            return person;
-        }());
-
-        var per = new vm();
-        window.onload = function () {
-            ko.applyBindings(per);
-        }
-
-
-        //alert(window.external.PeripheringDevice.GetExternalName());
-
-        //var vm = function () {
-        //    this.fullName = ko.observable("koname");
-        //}
-
-        var key = window.external.PeripheringDevice.OnExternalEvent = function (name) {
-            per.fullNameW = name;
-            alert(per.fullName);
-        }
-
-        //window.external.PeripheringDevice.AddJavaScriptListener(function (name) {
-
-        //    per.fullNameW = name;
-        //    alert(per.fullName);
-        //})
-
-
-        //function change() {
-        //    per.fullNameW = '动态改变';
-        //    alert(per.fullName);
-        //}
-
-        //ko.applyBindings(new vm());
-
-
-        //var ViewModel = function (first, last) {
-        //    this.firstName = ko.observable(first);
-        //    this.lastName = ko.observable(last);
-        //};
-
-        //ko.applyBindings(new ViewModel("Planet", "Earth"));
-    </script>
 </head>
 <body>
-    <!--<input type="text" class="form-control"  data-bind="value:fullName">-->
-    <!--<input type="text" id="txt1" value="" />-->
-    <!--<button type="button" onclick="change()">测试</button>-->
+    <input data-bind="value: canWrite" />
+    <input data-bind="value: readonly" />
+    <button data-bind="click: setValue">
+        set
+    </button>
 
-
-    <p>First name: <input data-bind="value:per.fullName" /></p>
-    
-    <p>externalName: <input data-bind="value:per.externalName" /></p>
-    <!--<p>Last name: <input data-bind="value: lastName" /></p>-->
-
+    <span data-bind="text: ko.toJSON($data)"></span>
 
 </body>
 </html>
+
+<script type="text/javascript">
+    ko.extenders.readonly = function (target, readonly) {
+        var computed = ko.computed({
+            read: target,
+            write: function () {
+                debugger
+                if (arguments.length <= 1) {
+                    if (!computed.canWrite()) {
+                        console.log("Observable in read only mode");
+                        return;
+                    }
+                }
+
+                target(arguments[0]);
+            }
+        });
+
+        computed.canWrite = ko.observable(!readonly);
+        return computed;
+    };
+
+    ViewModel = function () {
+        this.canWrite = ko.observable('aa').extend({ readonly: false });
+        this.readonly = ko.observable('bb').extend({ readonly: true });
+        this._readonly = 'default';
+        this.canWrite.subscribe(function (newValue) {
+            console.log(": " + newValue);
+        });
+
+        this.readonly.subscribe(function (newValue) {
+            console.log(newValue);
+        });
+
+        this.setValue = function () {
+            debugger
+            this.readonly('yyy', true);
+
+        }
+    }
+
+    ko.applyBindings(new ViewModel());
+</script>

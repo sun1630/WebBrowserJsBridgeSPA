@@ -19,7 +19,7 @@
             },
             enumerable: true,
             configurable: true
-        })
+        });
 
         Object.defineProperty(data.prototype, 'BranchName', {
             get: function () {
@@ -27,14 +27,14 @@
             },
             enumerable: true,
             configurable: true
-        })
+        });
         Object.defineProperty(data.prototype, 'BranchNameW', {
             set: function (newValue) {
                 this._BranchName(newValue);
             },
             enumerable: true,
             configurable: true
-        })
+        });
         return data;
     }());
 
