@@ -5,13 +5,25 @@
         100004
         <br />
 
-        <ul data-bind="foreach:{data:Object.keys(DataContext['Trans']), as: 'obj'} ">
+        <!--<ul data-bind="foreach:{data:Object.keys(DataContext['Trans']()), as: 'obj'} ">
             <li>
                 <span data-bind="text:obj"></span>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span data-bind="text:$parent.DataContext['Trans'][obj].amount"></span>
+                <span data-bind="text:$parent.DataContext['Trans']()[obj].amount"></span>
+            </li>
+        </ul>-->
+
+        <ul data-bind="foreach:{data:DataContext.TransList, as: 'obj'} ">
+            <li>
+                <span data-bind="text:obj.propName"></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span data-bind="text:obj.propValue.amount"></span>
             </li>
         </ul>
+
+
+        <input type="text" data-bind="value:delkey" />
+        <button type="button" data-bind="click:del">delete </button>
 
 
 

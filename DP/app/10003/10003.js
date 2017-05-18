@@ -30,12 +30,6 @@
     var aa = ps.cus.name;
 
 
-
-    //ps + '.' + path = newValue;
-
-    alert(ps.cus.name);
-
-
     return '';
 
 });

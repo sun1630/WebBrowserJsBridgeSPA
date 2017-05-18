@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\10005\10005.html" />
+    <Content Include="app\10005\10005.js" />
     <Content Include="app\10004\10004.html" />
     <Content Include="app\10004\10004.js" />
     <Content Include="app\10003\10003.html" />
@@ -77,6 +79,10 @@
     <Content Include="css\consolestyle.css" />
     <Content Include="lib\consolejs\console.js" />
     <Content Include="lib\consolejs\functions.js" />
+    <Content Include="lib\es6-promise.auto.min.js" />
+    <Content Include="lib\es6-sham.min.js" />
+    <Content Include="lib\es6-shim.min.js" />
+    <Content Include="lib\knockout\knockout.validation.min.js" />
     <Content Include="packages.config" />
     <Content Include="app\viewComposition\inlineModule" />
     <Content Include="app\widgets\Readme.md" />

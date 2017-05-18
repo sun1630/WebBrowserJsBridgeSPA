@@ -13,7 +13,7 @@
             }
             this._age = 20;
             this._externalName = 'js externalName';
-            this.DataContext = data;
+            this.DataContext = data.DataContext;
         }
 
         Object.defineProperty(person.prototype, "fullName", {

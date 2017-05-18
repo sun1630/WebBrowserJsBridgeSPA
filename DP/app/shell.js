@@ -32,6 +32,12 @@
                                     title: '10004',
                                     nav: 1
                                 },
+                                {
+                                    route: '10005',
+                                    moduleId: '10005/10005',
+                                    title: '10005',
+                                    nav: 1
+                                },
                                 //{ route: 'view-composition',                    moduleId: 'viewComposition/index',      title: 'View Composition',      nav: true },
                                 //{ route: 'modal',                               moduleId: 'modal/index',                title: 'Modal Dialogs',         nav: 3 },
                                 //{ route: 'event-aggregator',                    moduleId: 'eventAggregator/index',      title: 'Events',                nav: 2 },
