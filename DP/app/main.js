@@ -34,7 +34,8 @@ function OnValueChanged(target,sender, newValue)
 {
     console.log(target);
     console.log(sender );
-    console.log( newValue);
+    console.log(newValue);
+    // 通知C# 更新统一数据层
 
 }
 
@@ -53,7 +54,6 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'share', 'boo
                 for (var i = 0; i < arrs.length; i++) {
                     item = nextNode(item, arrs[i], newValue);
                     console.log(item);
-
                 }
                 function nextNode(target, nextNode, Value) {
                     if (Object.prototype.toString.call(target[nextNode]) === "[object String]") {

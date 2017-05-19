@@ -24,8 +24,8 @@
             write: function () {
                 if (arguments.length <= 1) {
                     if (!computed.canWrite()) {
-                        var aa = target();
-                        target(aa);
+                        //var aa = target();
+                        //target(aa);
                         console.log("Observable in read only mode");
 
                         return;

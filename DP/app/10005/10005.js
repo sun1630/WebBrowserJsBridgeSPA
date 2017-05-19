@@ -43,9 +43,12 @@
             //Address: []
         },
         methods: {
-
+            changeBranchName: function () {
+                this.System.BranchNo('S0002',true);
+                this.System.BranchName('上海分行');
+            },
             alertTransNo: function () {
-                alert(this.TransNo() + ' : ' + this.TransAmount() );
+                alert(this.TransNo() + ' : ' + this.TransAmount());
             },
             changeTransNo: function () {
                 this.TransNo(this.vmpTransNo(), false);
