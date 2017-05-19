@@ -1,10 +1,10 @@
 ﻿define(['durandal/app', 'durandal/system', 'knockout', 'share', 'vmProvide'], function (app, system, ko, dm, vmp) {
-   
-    var model= new vmp({
+
+    var model = new vmp({
         name: '',
         data: {
-            //System: dm.System,
-            //Teller: dm.Teller,
+            System: dm.System,
+            Teller: dm.Teller,
             //TellerName :{
             //    value:shareData.Teller.Name,
             //    metadata{}
@@ -21,26 +21,37 @@
                 value: 'T00001',
                 metadata: {
                     rule: {
-                        required: true,
-                        readony: true
+                        required: 'this is required',
+                        readonly: true
                     }
                 }
-            }
-            //},
-            //TransAmount: {
-            //    value: 1000,
-            //    metadata: {
-            //        rule: {
-            //            required: true
-            //        },
-            //        format: function (value) {
-            //            return value;
-            //        }
-            //    }
-            //},
+            },
+            vmpTransNo: {
+                value: ''
+            },
+            TransAmount: {
+                value: 1000,
+                metadata: {
+                    rule: {
+                        required: true
+                    },
+                    format: function (value) {
+                        return value;
+                    }
+                }
+            },
             //Address: []
+        },
+        methods: {
+
+            alertTransNo: function () {
+                alert(this.TransNo() + ' : ' + this.TransAmount() );
+            },
+            changeTransNo: function () {
+                this.TransNo(this.vmpTransNo(), false);
+            }
         }
     })
 
-    return  model;
+    return model;
 });

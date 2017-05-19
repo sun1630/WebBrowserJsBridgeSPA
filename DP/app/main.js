@@ -29,6 +29,17 @@
 }(window.ShareManager || {})
 );
 
+
+function OnValueChanged(target,sender, newValue)
+{
+    console.log(target);
+    console.log(sender );
+    console.log( newValue);
+
+}
+
+
+
 define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'share', 'bootstrap'], function (system, app, viewLocator, data) {
 
 
