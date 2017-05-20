@@ -6,6 +6,8 @@ namespace WF_DefineProperty
     using System;
     using System.Reflection;
     using System.Windows.Forms;
+    using System.Threading.Tasks;
+    using System.Linq;
     public partial class Form1 : Form
     {
         public Form1()
@@ -55,10 +57,10 @@ namespace WF_DefineProperty
             object[] args = new object[2];
             args[0] = (object)this.textBox1.Text;
             args[1] = (object)this.textBox2.Text;
-            var peripheringDevice = _dso.DataSynchronizer;
-            if (peripheringDevice.OnExternalEvent != null)
+            var synchronizer = _dso.DataSynchronizer;
+            if (synchronizer.OnExternalEvent != null)
             { 
-                var listener = peripheringDevice.OnExternalEvent;
+                var listener = synchronizer.OnExternalEvent;
                 listener
                     .GetType()
                     .InvokeMember
@@ -70,26 +72,40 @@ namespace WF_DefineProperty
                                 , args
                             );
             }
+            //有问题
+            synchronizer
+                .Listeners
+                .AsParallel()
+                .ForAll
+                    (
+                        (x) =>
+                        {
+                            try
+                            {
+                                x
+                                    .GetType()
+                                    .InvokeMember
+                                            (
+                                                ""
+                                                , BindingFlags.InvokeMethod
+                                                , null
+                                                , x
+                                                , args
+                                            );
+                            }
+                            catch (Exception)
+                            {
 
-            peripheringDevice.Listeners.ForEach(
+                                throw;
+                            }
+                        }
 
-                (x)=>
-                {
-
-                    x
-                    .GetType()
-                    .InvokeMember
-                            (
-                                ""
-                                , BindingFlags.InvokeMethod
-                                , null
-                                , x
-                                , args
-                            );
-                }
+                    );
+                
 
 
-                );
+
+       
 
         }
 
