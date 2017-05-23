@@ -12,7 +12,7 @@
                 }
             },
             amount: {
-                value: ''
+                value: '' 
             }
         },
         methods: {
