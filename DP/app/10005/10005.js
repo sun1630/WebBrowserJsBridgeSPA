@@ -3,8 +3,8 @@
     var model = new vmp({
         name: '',
         data: {
-            System: dm.System,
-            Teller: dm.Teller,
+            //System: dm.System,
+            //Teller: dm.Teller,
             //TellerName :{
             //    value:shareData.Teller.Name,
             //    metadata{}
@@ -17,6 +17,10 @@
             //        }
             //    }
             //},
+            Customer:{
+                name: 'zhangsan',
+                age:28
+            },
             TransNo: {
                 value: 'T00001',
                 metadata: {

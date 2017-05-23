@@ -8,7 +8,7 @@
         messageTemplate: null
     }, true);
 
-    ko.extenders.logChange = function (target, option,option2) {
+    ko.extenders.logChange = function (target, option, option2) {
         target.subscribe(function (newValue) {
             console.log("========================");
             console.log(option);
@@ -44,7 +44,6 @@
         var local = function (ctx) {
             for (var d in opt.data) {
                 var field = opt.data[d];
-
                 if (field.hasOwnProperty('value')) {
                     if (field.metadata && field.metadata.rule) {
                         var ext = {};
@@ -55,14 +54,25 @@
                                 case 'readonly': ext.readonly = field.metadata.rule[rules[key]]; break;
                             }
                         }
-                        ext.logChange = { root: local,path:d};
+                        ext.logChange = { root: local, path: d };
                         this[d] = field instanceof Array ? ko.observableArray(field.value).extend(ext) : ko.observable(field.value).extend(ext);
 
                     } else {
                         this[d] = field instanceof Array ? ko.observableArray(field.value).extend(ext) : ko.observable(field.value).extend({ readonly: false });
                     }
                 } else {
-                    this[d] = field;
+                    //有问题  system,teller,{} 都属于Object 无法区分
+                    if (field instanceof Object) {
+                        var keys = Object.keys(field);
+                        for (var i in keys) {
+                            field[keys[i]] = ko.observable(field[keys[i]]);
+                        }
+                        this[d] = field;
+                    }
+
+                    if (field instanceof Array) {
+                        this[d] = ko.observableArray(field);
+                    }
                 }
             }
 
