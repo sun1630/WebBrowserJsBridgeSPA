@@ -61,11 +61,13 @@
                         this[d] = field instanceof Array ? ko.observableArray(field.value).extend(ext) : ko.observable(field.value).extend({ readonly: false });
                     }
                 } else {
-                    //有问题  system,teller,{} 都属于Object 无法区分
+                    //有问题  system,teller,{} 都属于Object 无法区分  ，暂时以字段是否是function 来判断
                     if (field instanceof Object) {
                         var keys = Object.keys(field);
                         for (var i in keys) {
-                            field[keys[i]] = ko.observable(field[keys[i]]);
+                            if (!field[keys[i]] instanceof Function) {
+                                field[keys[i]] = ko.observable(field[keys[i]]);
+                            }
                         }
                         this[d] = field;
                     }

@@ -7,7 +7,7 @@
         
         
         
-        <p>First name: <input data-bind="value: fullName"/></p>
+        <!--<p>First name: <input data-bind="value: fullName"/></p>
 
         <p>First name w: <input data-bind="value: fullNameW" /></p>
 
@@ -17,7 +17,12 @@
         <p>Share First name w: <input data-bind="value: dataContextB.fullNameW" /></p>
 
         <button data-bind="click: alertA">alert</button>
-        <button data-bind="click: dataContextB.alertA">Share alert</button>
+        <button data-bind="click: dataContextB.alertA">Share alert</button>-->
+
+        <h4>10002 Transaction</h4>
+        <p>客户名: <input data-bind="value:Transaction.customerName" /></p>
+        <p>交易金额: <input data-bind="value:Transaction.amount" /></p>
+        <p><button data-bind="click: UpdateTransaction">Update</button></p>
 
     </div>
     </section>

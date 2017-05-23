@@ -30,10 +30,29 @@
                        value:ProvinceCode,
                        event:{change:changepv}
                        "></select>
-        
+
         <select data-bind="options: City,
                        optionsText: 'value',
-                       value: 'code',
+                       optionsValue:'code',
+                       value: CityCode,
+                       optionsCaption: '请选择',
+                       "></select>
+
+        <br />
+        <br />
+        <br />
+        <select data-bind="options: addr,
+                       optionsText: 'value',
+                       optionsValue:'code',
+                       optionsCaption: '请选择',
+                       value:addrCode,
+                       event:{change:changeAddr}
+                       "></select>
+
+        <select data-bind="options: addrChildren,
+                       optionsText: 'value',
+                       optionsValue:'code',
+                       value: CityCode,
                        optionsCaption: '请选择',
                        "></select>
     </div>

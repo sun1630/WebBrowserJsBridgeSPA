@@ -1,13 +1,13 @@
 ﻿<section>
-    <br/>
+    <br />
     <div>
-        
+
         100001
         <br />
-        
-        
-        
-        <p>First name: <input data-bind="value: fullName"/></p>
+
+
+
+        <!--<p>First name: <input data-bind="value: fullName"/></p>
 
         <p>First name w: <input data-bind="value: fullNameW" /></p>
 
@@ -27,10 +27,17 @@
         <p>Trans ID(Observable): <input data-bind="value: DataContext.Trans['T3'].amount" /></p>
 
         <p>system ID(Observable): <input data-bind="value: DataContext.system.systemid" /></p>
-        
+
 
         <button data-bind="click: alertA">alert</button>
-        <button data-bind="click: DataContext.alertA">Share alert</button>
+        <button data-bind="click: DataContext.alertA">Share alert</button>-->
+
+        <h4>10001 Transaction</h4>
+        <p>客户名: <input data-bind="value:Transaction.customerName" /></p>
+        <p>交易金额: <input data-bind="value:Transaction.amount" /></p>
+        <p><button data-bind="click: AddTransaction">Add</button></p>
+
+
 
     </div>
-    </section>
+</section>

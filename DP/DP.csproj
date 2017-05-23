@@ -214,6 +214,7 @@
     <Content Include="lib\require\require.js" />
     <Content Include="lib\require\text.js" />
     <Content Include="Share\Share.js" />
+    <Content Include="spa.js" />
     <Content Include="vmProvide.js" />
     <Content Include="wb1.html" />
     <Content Include="Web.config" />

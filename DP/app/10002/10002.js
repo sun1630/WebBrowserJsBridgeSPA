@@ -1,52 +1,14 @@
-﻿define(['durandal/app', 'durandal/system', 'knockout', 'share'], function (app, system, ko, data) {
-    var vm = (function () {
-        function person() {
-            if (!debugInWebBrowser) {
-                this._fullName = ko.observable(
-                   'default zhangsan'
-               );
+﻿define(['durandal/app', 'durandal/system', 'knockout', 'share', 'vmProvide'], function (app, system, ko, dm, vmp) {
+    return new vmp({
+        data: {
+            Transaction: dm.Transaction
+        },
+        methods: {
+            UpdateTransaction: function () {
+                this.Transaction.customerName('李四', true);
+                this.Transaction.amount(10);
             }
-            else {
-                this._fullName = ko.observable(
-                    window.external.DataSynchronizer.GetExternalName()
-                );
-            }
-            this._age = 20;
-            this._externalName = 'js externalName';
-            this.dataContextB = data.DataContext;
         }
-        Object.defineProperty(person.prototype, "fullName", {
-            get: function () {
-                return this._fullName();
-            },
-            enumerable: true,
-            configurable: true
-        });
+    });
 
-        Object.defineProperty(person.prototype, "fullNameW", {
-            set: function (newName) {
-                this._fullName(newName);
-            },
-            enumerable: true,
-            configurable: true
-        });
-        return person;
-    }());
-
-    var r = new vm();
-
-    if (debugInWebBrowser) {
-        //window
-        //    .external
-        //    .DataSynchronizer
-        //    .AddJavaScriptListener(function (msg) {
-        //        r.fullNameW = msg;
-        //    });
-    }
-
-    r.alertA = function () {
-        alert(this.fullName);
-    }
-
-    return r;
 });
