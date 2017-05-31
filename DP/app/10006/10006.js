@@ -49,21 +49,17 @@
                     { code: '001', value: '北京市' },
                     { code: '002', value: '上海市' }
                 ]
-                
             },
             ProvinceCode: {
                 value: ''
             },
             CityData: {
                 value: [
-                    
+                    { code: '001001', value: '海淀区', parent: '001' },
+                    { code: '001002', value: '昌平区', parent: '001' },
+                    { code: '002001', value: '浦东新区', parent: '002' },
+                    { code: '002002', value: '普陀区', parent: '002' },
                 ]
-                ,
-                metadata: {
-                    datasource: dm.City,
-
-                }
-
             },
             City: {
                 value: []
@@ -71,10 +67,6 @@
             CityCode: {
                 value: ''
             },
-
-
-
-
             addr: {
                 value: [
                     {
@@ -94,6 +86,10 @@
                         ]
                     }
                 ]
+            },
+            addrChildren: [],
+            addrCode: {
+                value: ''
             }
         },
         methods: {
@@ -105,30 +101,26 @@
                 alert(this.TransNo() + ' : ' + this.TransAmount());
             },
             changeTransNo: function () {
-                this.TransNo(this.vmpTransNo(), true);
+                this.TransNo(this.vmpTransNo(), false);
             },
             changepv: function () {
-                //var code = this.ProvinceCode();
-                //var tm = this.CityData().filter(function (item) {
-                //    return item.parent === code;
-                //});
+                var code = this.ProvinceCode();
+                var tm = this.CityData().filter(function (item) {
+                    return item.parent === code;
+                });
                 //for (var c in this.CityData()) {
                 //    if (c.parent.code == this.Province().code) {
                 //        tm.push(c);
                 //    }
                 //}
-                //this.City(tm);
+                this.City(tm);
             },
             changeAddr: function () {
-                //var code = this.addrCode();
-                //var tm = this.addr().filter(function (item) {
-                //    return item.code === code;
-                //});
-                //this.addrChildren(tm[0].children);
-            },
-            btntest: function () {
-                var aa = this.selectedaddr().code;
-
+                var code = this.addrCode();
+                var tm = this.addr().filter(function (item) {
+                    return item.code === code;
+                });
+                this.addrChildren(tm[0].children);
             }
         }
     })

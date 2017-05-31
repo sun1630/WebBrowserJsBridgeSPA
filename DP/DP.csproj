@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\10006\10006.html" />
+    <Content Include="app\10006\10006.js" />
     <Content Include="app\10005\10005.html" />
     <Content Include="app\10005\10005.js" />
     <Content Include="app\10004\10004.html" />

@@ -27,7 +27,6 @@
                         //var aa = target();
                         //target(aa);
                         console.log("Observable in read only mode");
-
                         return;
                     }
                 }
@@ -55,10 +54,20 @@
                             }
                         }
                         ext.logChange = { root: local, path: d };
-                        this[d] = field instanceof Array ? ko.observableArray(field.value).extend(ext) : ko.observable(field.value).extend(ext);
 
+                        if (field.value instanceof Array) {
+                            this[d] = ko.observableArray(field.value).extend(ext);
+                            this["selected" + d] = ko.observable();
+                        } else {
+                            this[d] = ko.observable(field.value).extend(ext);
+                        }
                     } else {
-                        this[d] = field instanceof Array ? ko.observableArray(field.value).extend(ext) : ko.observable(field.value).extend({ readonly: false });
+                        if (field.value instanceof Array) {
+                            this["selected" + d] = ko.observable();
+                            this[d] = ko.observableArray(field.value).extend(ext);
+                        } else {
+                            this[d] = ko.observable(field.value).extend({ readonly: false });
+                        }
                     }
                 } else {
                     //有问题  system,teller,{} 都属于Object 无法区分  ，暂时以字段是否是function 来判断

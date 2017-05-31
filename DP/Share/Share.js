@@ -43,6 +43,11 @@
         System: {
             BranchNo: ko.observable('B0001').extend({ required: 'this is required', readonly: true }),
             BranchName: ko.observable('北京分行').extend({ required: 'this is required' }),
+            provinces: [
+                {
+
+                }
+            ]
         },
         Teller: {
             TellerNo: ko.observable('T0001').extend({ required: 'this is required', readonly: true }),

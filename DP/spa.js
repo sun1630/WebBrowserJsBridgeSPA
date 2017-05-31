@@ -4,6 +4,11 @@
             .external
             .DataSynchronizer
             .AddJavaScriptListener(function (path, newValue) {
+
+                if (path.indexOf('.') < 0) {
+                    return path(newValue);
+                }
+
                 var arrs = path.split('.');
                 var item = data;
                 for (var i = 0; i < arrs.length; i++) {

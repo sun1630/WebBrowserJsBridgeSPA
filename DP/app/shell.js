@@ -2,12 +2,7 @@
     return {
         router: router,
         activate: function () {
-            return router.map([{
-                                    route: ['', 'home'],
-                                    moduleId: 'hello1/index',
-                                    title: 'Hello World',
-                                    nav: 1
-                                },
+            return router.map([
                                 {
                                     route: '10001',
                                     moduleId: '10001/10001',
@@ -38,6 +33,12 @@
                                     title: '10005',
                                     nav: 1
                                 },
+                                {
+                                    route: '10006',
+                                    moduleId: '10006/10006',
+                                    title: '10006',
+                                    nav: 1
+                                },
                                 //{ route: 'view-composition',                    moduleId: 'viewComposition/index',      title: 'View Composition',      nav: true },
                                 //{ route: 'modal',                               moduleId: 'modal/index',                title: 'Modal Dialogs',         nav: 3 },
                                 //{ route: 'event-aggregator',                    moduleId: 'eventAggregator/index',      title: 'Events',                nav: 2 },
@@ -48,7 +49,7 @@
 
 
             ]).buildNavigationModel()
-              .mapUnknownRoutes('hello/index', 'not-found')
+              .mapUnknownRoutes('10001/10001', 'not-found')
               .activate();
         }
     };

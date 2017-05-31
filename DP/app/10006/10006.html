@@ -1,18 +1,7 @@
 ﻿<section>
     <br />
     <div>
-        10005
-        <br />
-        <p>BranchNo: <input type="text" data-bind="value:System.BranchNo" /></p>
-        <p>BranchName:<input type="text" data-bind="value: System.BranchName" /></p>
-        <!--<p><button type="button" data-bind="click:changeBranchName">changeBranchName</button></p>
-
-        <br />
-        <p>TellerNo: <input type="text" data-bind="value:Teller.TellerNo" /></p>
-        <p>TellerName:<input type="text" data-bind="value:Teller.TellerName" /></p>-->
-        <!--<p>Update TellerName:<input type="text" data-bind="value: UpdateTellerName" /></p>
-        <p><button type="button" data-bind="click:changeTeller">Teller</button></p>-->
-        <!--<p>vmpName: <input type="text" data-bind="value: vmpName" /></p>-->
+        10006
 
         <br />
         <p>TransNo:<input type="text" data-bind="value:TransNo" /></p>
@@ -39,22 +28,21 @@
                        "></select>
 
         <br />
+        <br />
+        <br />
         <select data-bind="options: addr,
                        optionsText: 'value',
-                       value:selectedaddr
+                       optionsValue:'code',
+                       optionsCaption: '请选择',
+                       value:addrCode,
+                       event:{change:changeAddr}
                        "></select>
-        <span data-bind="text:selectedaddr().code">
 
-        </span>
-
-        <span data-bind="text:selectedaddr().children">
-
-        </span>
-        <select data-bind="options: selectedaddr().children,
+        <select data-bind="options: addrChildren,
                        optionsText: 'value',
                        optionsValue:'code',
+                       value: CityCode,
+                       optionsCaption: '请选择',
                        "></select>
     </div>
-
-    <button type="button" data-bind="click:btntest">测试</button>
 </section>

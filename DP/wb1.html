@@ -1,64 +1,19 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <script src="lib/knockout/knockout-3.4.0.debug.js"></script>
-    <title></title>
-
-</head>
-<body>
-    <input data-bind="value: canWrite" />
-    <input data-bind="value: readonly" />
-    <button data-bind="click: setValue">
-        set
-    </button>
-
-    <span data-bind="text: ko.toJSON($data)"></span>
-
-</body>
-</html>
-
+﻿
+<script src="lib/knockout/knockout-3.4.0.js"></script>
+<p>
+    Choose some countries you'd like to visit:
+    <select data-bind="options: availableCountries, selectedOptions: chosenCountries" size="5" ></select>
+</p>
+<span data-bind="text: chosenCountries"></span>
 <script type="text/javascript">
-    ko.extenders.readonly = function (target, readonly) {
-        var computed = ko.computed({
-            read: target,
-            write: function () {
-                debugger
-                if (arguments.length <= 1) {
-                    if (!computed.canWrite()) {
-                        console.log("Observable in read only mode");
-                        return;
-                    }
-                }
+     var viewModel = {
+         availableCountries: ko.observableArray(['France', 'Germany', 'Spain']),
+         chosenCountries: ko.observableArray(['Germany']), // Initially, only Germany is selected
+         children: []
 
-                target(arguments[0]);
-            }
-        });
+     };
 
-        computed.canWrite = ko.observable(!readonly);
-        return computed;
-    };
-
-    ViewModel = function () {
-        this.canWrite = ko.observable('aa').extend({ readonly: false });
-        this.readonly = ko.observable('bb').extend({ readonly: true });
-        this._readonly = 'default';
-        this.canWrite.subscribe(function (newValue) {
-            console.log(": " + newValue);
-        });
-
-        this.readonly.subscribe(function (newValue) {
-            console.log(newValue);
-        });
-
-        this.setValue = function () {
-            debugger
-            this.readonly('yyy', true);
-
-        }
-    }
-
-    ko.applyBindings(new ViewModel());
+     // ... then later ...
+     viewModel.chosenCountries.push('France'); // Now France is selected too
+     ko.applyBindings(viewModel);
 </script>
